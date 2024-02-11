@@ -1,0 +1,26 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-header">Orders</div>
+    <div class="card-body">
+      <h2>Orders</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th> <th>Date</th> <th>State</th> <th>Products Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let o of orders">
+          <td>{{o.id}}</td>
+          <td>{{o.date}}</td>
+          <td>{{o.state}}</td>
+          <td>{{o.productItems.length}}</td>
+          <td>
+            <button class="btn btn-success" (click)="getOrderDetails(o)">Order Details</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

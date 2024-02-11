@@ -1,0 +1,35 @@
+<div class="p-3">
+  <div class="card" *ngIf="orderDetails">
+    <div class="card-header">Order Details : {{orderId}}</div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item">Date : {{orderDetails.date | date : 'dd/MM/yyyy'}}</li>
+        <li class="list-group-item">State : {{orderDetails.state}}</li>
+      </ul>
+      <table class="table">
+        <thead>
+         <tr>
+           <th class="bg bg-dark text-white">ID</th>
+           <th class="bg bg-dark text-white">Product Name</th>
+           <th class="bg bg-dark text-white">Price</th>
+           <th class="bg bg-dark text-white">Quantity</th>
+           <th class="bg bg-dark text-white">Amount</th>
+         </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pi of orderDetails.productItems">
+            <td>{{pi.id}}</td>
+            <td>{{pi.product.name}}</td>
+            <td>{{pi.price | number :'0.2-2'}}</td>
+            <td>{{pi.quantity}}</td>
+            <td>{{pi.quantity * pi.price | number :'0.2-2'}}</td>
+          </tr>
+          <tr class=" bg bg-dark">
+            <td colspan="4">Total</td>
+            <td>{{getTotal(orderDetails)| number :'0.2-2'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
